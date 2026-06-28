@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #FAF7F0;
+    color: #1C2B33;
+  }
+  h1, h2, h3 {
+    font-family: var(--font-fraunces), Georgia, serif;
+  }
+}
+
+@layer components {
+  /* Etiqueta tipo "eyebrow": pequeña, en mayúsculas, espaciada, como el sello de una maleta */
+  .eyebrow {
+    @apply font-mono text-xs uppercase tracking-[0.18em] text-moss;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-md bg-lantern px-5 py-2.5
+           font-body text-sm font-semibold text-paper transition-colors
+           hover:bg-lanterndark disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-md border border-ink/20 bg-transparent px-5 py-2.5
+           font-body text-sm font-semibold text-ink transition-colors
+           hover:border-ink hover:bg-ink/5;
+  }
+
+  .input-field {
+    @apply w-full rounded-md border border-hairline bg-paper px-3 py-2 font-body text-sm text-ink
+           placeholder:text-ink/40 focus:outline-none focus:ring-2 focus:ring-moss/40;
+  }
+
+  .field-label {
+    @apply mb-1 block font-body text-xs font-medium uppercase tracking-wide text-ink/60;
+  }
+
+  /* Elemento de firma: tarjeta con forma de billete/etiqueta de equipaje.
+     El "stub" de la derecha lleva fechas y precio en monoespaciada, separado
+     por una línea perforada con dos muescas circulares, como un billete real. */
+  .ticket {
+    @apply relative grid grid-cols-[1fr_auto] overflow-hidden rounded-ticket border border-hairline bg-paper;
+  }
+
+  .ticket-main {
+    @apply p-5;
+  }
+
+  .ticket-stub {
+    @apply relative flex min-w-[140px] flex-col items-end justify-center gap-1 border-l-2 border-dashed
+           border-hairline bg-gold/10 px-5 py-5 text-right;
+  }
+
+  .ticket-stub::before,
+  .ticket-stub::after {
+    content: "";
+    position: absolute;
+    left: -9px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: #FAF7F0;
+  }
+
+  .ticket-stub::before {
+    top: -9px;
+  }
+
+  .ticket-stub::after {
+    bottom: -9px;
+  }
+
+  .badge {
+    @apply inline-flex items-center rounded-full px-2.5 py-0.5 font-mono text-[11px] uppercase tracking-wide;
+  }
+
+  .badge-pendiente { @apply bg-gold/20 text-gold; }
+  .badge-confirmada { @apply bg-moss/15 text-moss; }
+  .badge-cancelada { @apply bg-lantern/15 text-lantern; }
+  .badge-completada { @apply bg-ink/10 text-ink/70; }
+}

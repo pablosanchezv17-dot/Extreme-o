@@ -1,0 +1,101 @@
+// Esquema de base de datos del hostal.
+// Ejecutar tras configurar DATABASE_URL en .env:
+//   npx prisma migrate dev --name init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+enum TipoHabitacion {
+  PRIVADA
+  COMPARTIDA
+  DORMITORIO
+}
+
+enum EstadoReserva {
+  PENDIENTE_PAGO
+  CONFIRMADA
+  PAGO_FALLIDO
+  CANCELADA
+  COMPLETADA
+}
+
+model Habitacion {
+  id              String          @id @default(cuid())
+  nombre          String
+  slug            String          @unique
+  descripcion     String
+  tipo            TipoHabitacion  @default(PRIVADA)
+  capacidad       Int
+  precioPorNoche  Decimal         @db.Decimal(10, 2)
+  imagenes        String[]        @default([])
+  comodidades     String[]        @default([])
+  activa          Boolean         @default(true)
+  creadaEn        DateTime        @default(now())
+  actualizadaEn   DateTime        @updatedAt
+
+  reservas        Reserva[]
+  resenas         Resena[]
+}
+
+model Reserva {
+  id              String          @id @default(cuid())
+  // Número de pedido enviado a Redsys (Ds_Merchant_Order): 4-12 caracteres,
+  // los 4 primeros deben ser numéricos según especificación de Redsys.
+  numeroPedido    String          @unique
+
+  habitacionId    String
+  habitacion      Habitacion      @relation(fields: [habitacionId], references: [id])
+
+  nombreHuesped   String
+  emailHuesped    String
+  telefonoHuesped String
+
+  fechaEntrada    DateTime
+  fechaSalida     DateTime
+  noches          Int
+  precioTotal     Decimal         @db.Decimal(10, 2)
+
+  estado          EstadoReserva   @default(PENDIENTE_PAGO)
+
+  // Datos devueltos por Redsys en la notificación (para trazabilidad/soporte)
+  redsysAuthCode  String?
+  redsysResponse  String?
+
+  creadaEn        DateTime        @default(now())
+  actualizadaEn   DateTime        @updatedAt
+
+  resena          Resena?
+
+  @@index([habitacionId, fechaEntrada, fechaSalida])
+}
+
+model Resena {
+  id              String          @id @default(cuid())
+  habitacionId    String
+  habitacion      Habitacion      @relation(fields: [habitacionId], references: [id])
+
+  reservaId       String          @unique
+  reserva         Reserva         @relation(fields: [reservaId], references: [id])
+
+  nombreHuesped   String
+  puntuacion      Int             // 1 a 5
+  comentario      String
+
+  aprobada        Boolean         @default(false)
+  creadaEn        DateTime        @default(now())
+}
+
+model Administrador {
+  id              String          @id @default(cuid())
+  email           String          @unique
+  nombre          String
+  passwordHash    String
+  creadoEn        DateTime        @default(now())
+}
