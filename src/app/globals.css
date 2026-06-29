@@ -4,82 +4,77 @@
 
 @layer base {
   body {
-    background-color: #FAF7F0;
-    color: #1C2B33;
+    background-color: #ffffff;
+    color: #222222;
+    font-family: var(--font-inter), system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
   }
-  h1, h2, h3 {
-    font-family: var(--font-fraunces), Georgia, serif;
+  h1, h2, h3, h4 {
+    font-family: var(--font-inter), system-ui, sans-serif;
+    font-weight: 600;
   }
 }
 
 @layer components {
-  /* Etiqueta tipo "eyebrow": pequeña, en mayúsculas, espaciada, como el sello de una maleta */
-  .eyebrow {
-    @apply font-mono text-xs uppercase tracking-[0.18em] text-moss;
-  }
-
+  /* Botón principal verde oliva */
   .btn-primary {
-    @apply inline-flex items-center justify-center rounded-md bg-lantern px-5 py-2.5
-           font-body text-sm font-semibold text-paper transition-colors
-           hover:bg-lanterndark disabled:cursor-not-allowed disabled:opacity-50;
+    @apply inline-flex items-center justify-center rounded-lg bg-olive-700 px-5 py-3
+           font-body text-sm font-semibold text-white transition-all
+           hover:bg-olive-800 active:scale-[0.98]
+           disabled:cursor-not-allowed disabled:opacity-50;
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center rounded-md border border-ink/20 bg-transparent px-5 py-2.5
-           font-body text-sm font-semibold text-ink transition-colors
-           hover:border-ink hover:bg-ink/5;
+    @apply inline-flex items-center justify-center rounded-lg border border-neutral-300 bg-white px-5 py-3
+           font-body text-sm font-semibold text-neutral-700 transition-all
+           hover:border-neutral-800 hover:bg-neutral-50;
   }
 
+  .btn-ghost {
+    @apply inline-flex items-center justify-center rounded-lg px-4 py-2
+           font-body text-sm font-medium text-neutral-600 transition-all
+           hover:bg-neutral-100;
+  }
+
+  /* Inputs */
   .input-field {
-    @apply w-full rounded-md border border-hairline bg-paper px-3 py-2 font-body text-sm text-ink
-           placeholder:text-ink/40 focus:outline-none focus:ring-2 focus:ring-moss/40;
+    @apply w-full rounded-lg border border-neutral-300 bg-white px-4 py-3 font-body text-sm text-neutral-800
+           placeholder:text-neutral-400 focus:border-olive-600 focus:outline-none focus:ring-2 focus:ring-olive-600/20;
   }
 
   .field-label {
-    @apply mb-1 block font-body text-xs font-medium uppercase tracking-wide text-ink/60;
+    @apply mb-1.5 block font-body text-xs font-semibold uppercase tracking-wider text-neutral-500;
   }
 
-  /* Elemento de firma: tarjeta con forma de billete/etiqueta de equipaje.
-     El "stub" de la derecha lleva fechas y precio en monoespaciada, separado
-     por una línea perforada con dos muescas circulares, como un billete real. */
-  .ticket {
-    @apply relative grid grid-cols-[1fr_auto] overflow-hidden rounded-ticket border border-hairline bg-paper;
-  }
-
-  .ticket-main {
-    @apply p-5;
-  }
-
-  .ticket-stub {
-    @apply relative flex min-w-[140px] flex-col items-end justify-center gap-1 border-l-2 border-dashed
-           border-hairline bg-gold/10 px-5 py-5 text-right;
-  }
-
-  .ticket-stub::before,
-  .ticket-stub::after {
-    content: "";
-    position: absolute;
-    left: -9px;
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    background-color: #FAF7F0;
-  }
-
-  .ticket-stub::before {
-    top: -9px;
-  }
-
-  .ticket-stub::after {
-    bottom: -9px;
-  }
-
+  /* Badges */
   .badge {
-    @apply inline-flex items-center rounded-full px-2.5 py-0.5 font-mono text-[11px] uppercase tracking-wide;
+    @apply inline-flex items-center rounded-full px-2.5 py-0.5 font-body text-[11px] font-medium;
+  }
+  .badge-pendiente  { @apply bg-amber-100 text-amber-700; }
+  .badge-confirmada { @apply bg-green-100 text-green-700; }
+  .badge-cancelada  { @apply bg-red-100 text-red-600; }
+  .badge-completada { @apply bg-neutral-100 text-neutral-600; }
+
+  /* Eyebrow */
+  .eyebrow {
+    @apply font-body text-xs font-semibold uppercase tracking-widest text-olive-600;
   }
 
-  .badge-pendiente { @apply bg-gold/20 text-gold; }
-  .badge-confirmada { @apply bg-moss/15 text-moss; }
-  .badge-cancelada { @apply bg-lantern/15 text-lantern; }
-  .badge-completada { @apply bg-ink/10 text-ink/70; }
+  /* Ticket (compatibilidad) */
+  .ticket { @apply rounded-xl border border-neutral-200 bg-white; }
+  .ticket-main { @apply p-5; }
+  .ticket-stub { @apply border-l border-neutral-200 bg-neutral-50 p-5; }
+
+  /* Card estilo Airbnb */
+  .room-card {
+    @apply overflow-hidden rounded-2xl bg-white transition-all duration-200;
+  }
+  .room-card:hover {
+    @apply shadow-card-hover -translate-y-0.5;
+  }
+
+  /* Divider */
+  .divider {
+    @apply my-6 border-t border-neutral-200;
+  }
 }
