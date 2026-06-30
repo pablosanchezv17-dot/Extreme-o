@@ -53,7 +53,7 @@ export function SiteFooter() {
               <span className="font-body text-base font-bold text-white">Hostal Extremeño</span>
             </div>
             <p className="mt-3 font-body text-sm text-neutral-400 leading-relaxed">
-              Alojamiento en el corazón de Extremadura. Reserva directa, sin comisiones.
+              Alojamiento en Villa del Prado, Madrid. Reserva directa, sin comisiones.
             </p>
           </div>
           <div>

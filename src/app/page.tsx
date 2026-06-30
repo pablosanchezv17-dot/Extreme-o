@@ -1,6 +1,7 @@
 import { SiteHeader, SiteFooter } from "@/components/SiteHeader";
 import { SearchBar } from "@/components/SearchBar";
 import { RoomCard } from "@/components/RoomCard";
+import { Gallery } from "@/components/Gallery";
 import { buscarHabitacionesDisponibles } from "@/lib/availability";
 import { calcularNoches } from "@/lib/pricing";
 import { serializarHabitacion } from "@/types";
@@ -44,11 +45,11 @@ export default async function HomePage({
 
         <div className="relative z-10 w-full max-w-4xl px-6 pt-24 text-center">
           <div className="inline-flex items-center gap-2 rounded-full bg-white/15 backdrop-blur px-4 py-2 mb-4">
-            <span className="text-white/90 font-body text-sm">🌿 Extremadura · Reserva directa</span>
+            <span className="text-white/90 font-body text-sm">📍 Villa del Prado, Madrid · Reserva directa</span>
           </div>
           <h1 className="font-body text-4xl font-bold text-white sm:text-5xl lg:text-6xl leading-tight">
             Tu alojamiento perfecto<br />
-            <span className="text-olive-300">en el corazón de España</span>
+            <span className="text-olive-300">con piscina en la azotea</span>
           </h1>
           <p className="mx-auto mt-4 max-w-xl font-body text-lg text-white/80">
             Sin comisiones. Sin intermediarios. Precios directos del hostal.
@@ -90,9 +91,9 @@ export default async function HomePage({
             </div>
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
               {[
-                { icono: "💰", titulo: "Sin comisiones", texto: "Reserva directamente. El precio que ves es exactamente lo que pagas, sin sorpresas." },
-                { icono: "📅", titulo: "Cancelación flexible", texto: "Planes que cambian. Consulta condiciones en cada habitación, nos adaptamos." },
-                { icono: "⭐", titulo: "Valorado por viajeros", texto: "Más de 100 huéspedes han confiado en nosotros. Lee sus opiniones reales." }
+                { icono: "🏊", titulo: "Piscina en la azotea", texto: "Disfruta de nuestra piscina con vistas y relájate después de un día explorando Madrid." },
+                { icono: "🍹", titulo: "Bar y restaurante", texto: "En la misma azotea, junto a la piscina, encontrarás nuestro bar y restaurante para todo el día." },
+                { icono: "💰", titulo: "Sin comisiones", texto: "Reserva directamente. El precio que ves es exactamente lo que pagas, sin sorpresas." }
               ].map((f) => (
                 <div key={f.titulo} className="rounded-2xl border border-neutral-200 bg-white p-7 hover:border-olive-300 hover:shadow-card transition-all">
                   <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-olive-50 text-2xl mb-4">
@@ -103,6 +104,13 @@ export default async function HomePage({
                 </div>
               ))}
             </div>
+          </section>
+        )}
+
+        {/* Galería de fotos */}
+        {!hayBusqueda && (
+          <section className="mb-14">
+            <Gallery />
           </section>
         )}
 

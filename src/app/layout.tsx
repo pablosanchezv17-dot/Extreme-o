@@ -24,7 +24,7 @@ const plexMono = IBM_Plex_Mono({
 
 export const metadata: Metadata = {
   title: "Hostal Extremeño — Reservas directas",
-  description: "Alojamiento en Extremadura. Reserva tu habitación directamente, sin comisiones."
+  description: "Alojamiento en Villa del Prado, Madrid. Reserva tu habitación directamente, sin comisiones."
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
