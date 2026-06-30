@@ -137,6 +137,96 @@ async function main() {
   }
 
   console.log("Habitaciones de ejemplo listas.");
+
+  // ── Reseñas de ejemplo ──────────────────────────────────────────────
+  // Cada reseña falsa necesita una reserva "completada" detrás (relación
+  // 1 a 1). Son datos de demostración, no pedidos reales de Redsys.
+  const resenasEjemplo = [
+    {
+      pedido: "DEMO0001RESA",
+      slug: "doble-estandar",
+      nombre: "Laura Martínez",
+      puntuacion: 5,
+      comentario: "Habitación muy limpia y el personal super amable. La piscina de la azotea fue un acierto después de un día entero caminando por Madrid."
+    },
+    {
+      pedido: "DEMO0002RESA",
+      slug: "suite-deluxe",
+      nombre: "Carlos Fernández",
+      puntuacion: 5,
+      comentario: "La suite tiene mucho espacio y el baño privado se agradece. Tomamos algo en el bar de la azotea y las vistas estaban genial."
+    },
+    {
+      pedido: "DEMO0003RESA",
+      slug: "dormitorio-6-camas",
+      nombre: "Marta Gil",
+      puntuacion: 4,
+      comentario: "Buena relación calidad-precio para viajar con poco presupuesto. Las literas son cómodas y había buen ambiente con otros huéspedes."
+    },
+    {
+      pedido: "DEMO0004RESA",
+      slug: "familiar",
+      nombre: "Javier Romero",
+      puntuacion: 5,
+      comentario: "Fuimos en familia y la habitación nos vino perfecta. Villa del Prado es un pueblo tranquilo, ideal para desconectar."
+    },
+    {
+      pedido: "DEMO0005RESA",
+      slug: "individual-economica",
+      nombre: "Sofía Navarro",
+      puntuacion: 4,
+      comentario: "Viajaba sola y me sentí segura en todo momento. La habitación es pequeña pero tiene todo lo necesario."
+    },
+    {
+      pedido: "DEMO0006RESA",
+      slug: "doble-superior-bano",
+      nombre: "Pablo Ruiz",
+      puntuacion: 5,
+      comentario: "El baño privado y el escritorio nos vinieron genial porque trabajé un par de días desde la habitación. Repetiremos."
+    }
+  ];
+
+  for (const r of resenasEjemplo) {
+    const habitacion = await prisma.habitacion.findUnique({ where: { slug: r.slug } });
+    if (!habitacion) continue;
+
+    const fechaEntrada = new Date();
+    fechaEntrada.setDate(fechaEntrada.getDate() - 30);
+    const fechaSalida = new Date(fechaEntrada);
+    fechaSalida.setDate(fechaSalida.getDate() + 2);
+
+    const reserva = await prisma.reserva.upsert({
+      where: { numeroPedido: r.pedido },
+      update: {},
+      create: {
+        numeroPedido: r.pedido,
+        habitacionId: habitacion.id,
+        nombreHuesped: r.nombre,
+        emailHuesped: `${r.nombre.toLowerCase().replace(/ /g, ".")}@ejemplo.com`,
+        telefonoHuesped: "600000000",
+        fechaEntrada,
+        fechaSalida,
+        noches: 2,
+        precioTotal: Number(habitacion.precioPorNoche) * 2,
+        estado: "COMPLETADA"
+      }
+    });
+
+    await prisma.resena.upsert({
+      where: { reservaId: reserva.id },
+      update: {},
+      create: {
+        habitacionId: habitacion.id,
+        reservaId: reserva.id,
+        nombreHuesped: r.nombre,
+        puntuacion: r.puntuacion,
+        comentario: r.comentario,
+        aprobada: true
+      }
+    });
+  }
+
+  console.log("Reseñas de ejemplo listas.");
 }
 
 main()

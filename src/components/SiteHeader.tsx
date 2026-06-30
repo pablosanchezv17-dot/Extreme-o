@@ -11,15 +11,23 @@ export function SiteHeader() {
           </div>
           <span className="font-body text-lg font-bold text-white drop-shadow">Hostal Extremeño</span>
         </Link>
-        <nav className="flex items-center gap-2">
-          <Link href="/valorar" className="font-body text-sm font-medium text-white/90 hover:text-white px-3 py-2 rounded-lg hover:bg-white/10 transition-all">
+        <nav className="hidden md:flex items-center gap-1">
+          <Link href="/#habitaciones" className="font-body text-sm font-medium text-white/90 hover:text-white px-3 py-2 rounded-lg hover:bg-white/10 transition-all">
+            Habitaciones
+          </Link>
+          <Link href="/#galeria" className="font-body text-sm font-medium text-white/90 hover:text-white px-3 py-2 rounded-lg hover:bg-white/10 transition-all">
+            Galería
+          </Link>
+          <Link href="/resenas" className="font-body text-sm font-medium text-white/90 hover:text-white px-3 py-2 rounded-lg hover:bg-white/10 transition-all">
             Reseñas
           </Link>
           <Link href="/contacto" className="font-body text-sm font-medium text-white/90 hover:text-white px-3 py-2 rounded-lg hover:bg-white/10 transition-all">
             Contacto
           </Link>
-          <UserMenu />
         </nav>
+        <div className="flex items-center gap-2">
+          <UserMenu />
+        </div>
       </div>
     </header>
   );
@@ -35,12 +43,15 @@ export function SiteHeaderSolid() {
           </div>
           <span className="font-body text-lg font-bold text-olive-700">Hostal Extremeño</span>
         </Link>
-        <nav className="flex items-center gap-3">
-          <Link href="/" className="btn-ghost text-sm">Habitaciones</Link>
-          <Link href="/valorar" className="btn-ghost text-sm">Reseñas</Link>
+        <nav className="hidden md:flex items-center gap-1">
+          <Link href="/#habitaciones" className="btn-ghost text-sm">Habitaciones</Link>
+          <Link href="/#galeria" className="btn-ghost text-sm">Galería</Link>
+          <Link href="/resenas" className="btn-ghost text-sm">Reseñas</Link>
           <Link href="/contacto" className="btn-ghost text-sm">Contacto</Link>
-          <UserMenu />
         </nav>
+        <div className="flex items-center gap-2">
+          <UserMenu />
+        </div>
       </div>
     </header>
   );
@@ -63,8 +74,11 @@ export function SiteFooter() {
           <div>
             <p className="font-body text-xs font-semibold uppercase tracking-wider text-neutral-500 mb-4">Alojamiento</p>
             <ul className="space-y-2">
-              <li><Link href="/" className="font-body text-sm text-neutral-400 hover:text-white">Ver habitaciones</Link></li>
+              <li><Link href="/#habitaciones" className="font-body text-sm text-neutral-400 hover:text-white">Ver habitaciones</Link></li>
+              <li><Link href="/#galeria" className="font-body text-sm text-neutral-400 hover:text-white">Galería</Link></li>
+              <li><Link href="/resenas" className="font-body text-sm text-neutral-400 hover:text-white">Reseñas</Link></li>
               <li><Link href="/valorar" className="font-body text-sm text-neutral-400 hover:text-white">Dejar reseña</Link></li>
+              <li><Link href="/contacto" className="font-body text-sm text-neutral-400 hover:text-white">Contacto</Link></li>
             </ul>
           </div>
           <div>

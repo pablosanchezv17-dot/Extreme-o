@@ -105,13 +105,13 @@ export default async function HomePage({
 
         {/* Galería de fotos */}
         {!hayBusqueda && (
-          <section className="mb-14">
+          <section id="galeria" className="mb-14 scroll-mt-24">
             <Gallery />
           </section>
         )}
 
         {/* Habitaciones */}
-        <section>
+        <section id="habitaciones" className="scroll-mt-24">
           <div className="mb-6 flex items-center justify-between">
             <div>
               <span className="eyebrow">Disponibilidad</span>
