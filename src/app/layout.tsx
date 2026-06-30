@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Fraunces, Inter, IBM_Plex_Mono } from "next/font/google";
+import { Providers } from "@/components/Providers";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -22,15 +23,15 @@ const plexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Tu Hostal — Reservas directas",
-  description: "Reserva tu habitación directamente, sin comisiones de intermediarios."
+  title: "Hostal Extremeño — Reservas directas",
+  description: "Alojamiento en Extremadura. Reserva tu habitación directamente, sin comisiones."
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es">
       <body className={`${fraunces.variable} ${inter.variable} ${plexMono.variable} font-body`}>
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
