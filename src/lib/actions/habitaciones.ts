@@ -23,7 +23,7 @@ function aSlug(texto: string): string {
 export interface DatosHabitacion {
   nombre: string;
   descripcion: string;
-  tipo: "PRIVADA" | "COMPARTIDA" | "DORMITORIO";
+  tipo: "PRIVADA" | "COMPARTIDA" | "DORMITORIO" | "SUITE";
   capacidad: number;
   precioPorNoche: number;
   imagenes: string[];
