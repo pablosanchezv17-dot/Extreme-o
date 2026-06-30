@@ -1,10 +1,10 @@
-import { SiteHeader, SiteFooter } from "@/components/SiteHeader";
+import { SiteHeaderSolid, SiteFooter } from "@/components/SiteHeader";
 import { ReviewForm } from "@/components/ReviewForm";
 
 export default function PaginaValorar({ searchParams }: { searchParams: { pedido?: string } }) {
   return (
     <>
-      <SiteHeader />
+      <SiteHeaderSolid />
       <main className="mx-auto max-w-2xl px-6 py-16">
         <span className="eyebrow">Tu opinión nos ayuda</span>
         <h1 className="mt-2 font-display text-3xl font-semibold text-ink">Valora tu estancia</h1>

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { SiteHeader, SiteFooter } from "@/components/SiteHeader";
+import { SiteHeaderSolid, SiteFooter } from "@/components/SiteHeader";
 import { prisma } from "@/lib/prisma";
 
 function formatoFecha(fecha: Date): string {
@@ -22,7 +22,7 @@ export default async function PaginaConfirmacion({
 
   return (
     <>
-      <SiteHeader />
+      <SiteHeaderSolid />
       <main className="mx-auto max-w-2xl px-6 py-16">
         {!reserva ? (
           <p className="font-body text-ink/70">No encontramos esa reserva.</p>

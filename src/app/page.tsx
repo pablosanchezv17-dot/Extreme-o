@@ -51,10 +51,6 @@ export default async function HomePage({
             Tu alojamiento perfecto<br />
             <span className="text-olive-300">con piscina en la azotea</span>
           </h1>
-          <p className="mx-auto mt-4 max-w-xl font-body text-lg text-white/80">
-            Sin comisiones. Sin intermediarios. Precios directos del hostal.
-          </p>
-
           {/* Buscador */}
           <div className="mx-auto mt-8 max-w-3xl">
             <div className="rounded-2xl bg-white p-2 shadow-2xl">
@@ -91,8 +87,8 @@ export default async function HomePage({
             </div>
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
               {[
-                { icono: "🏊", titulo: "Piscina en la azotea", texto: "Disfruta de nuestra piscina con vistas y relájate después de un día explorando Madrid." },
-                { icono: "🍹", titulo: "Bar y restaurante", texto: "En la misma azotea, junto a la piscina, encontrarás nuestro bar y restaurante para todo el día." },
+                { icono: "🏊", titulo: "Piscina en la azotea", texto: "Nuestro hostal de dos plantas tiene una piscina en la azotea, ideal para refrescarte en los días de calor." },
+                { icono: "🍹", titulo: "Bar y restaurante", texto: "Junto a la piscina, en la misma azotea, encontrarás nuestro pequeño bar y restaurante abierto todo el día." },
                 { icono: "💰", titulo: "Sin comisiones", texto: "Reserva directamente. El precio que ves es exactamente lo que pagas, sin sorpresas." }
               ].map((f) => (
                 <div key={f.titulo} className="rounded-2xl border border-neutral-200 bg-white p-7 hover:border-olive-300 hover:shadow-card transition-all">

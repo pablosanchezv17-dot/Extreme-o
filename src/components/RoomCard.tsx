@@ -5,13 +5,15 @@ import type { HabitacionSerializada } from "@/types";
 const ETIQUETA_TIPO: Record<string, string> = {
   PRIVADA: "Habitación privada",
   COMPARTIDA: "Habitación compartida",
-  DORMITORIO: "Dormitorio"
+  DORMITORIO: "Dormitorio",
+  SUITE: "Suite"
 };
 
 const IMAGEN_FALLBACK: Record<string, string> = {
   PRIVADA: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80",
   COMPARTIDA: "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=800&q=80",
-  DORMITORIO: "https://images.unsplash.com/photo-1520277739336-7bf67edfa768?w=800&q=80"
+  DORMITORIO: "https://images.unsplash.com/photo-1520277739336-7bf67edfa768?w=800&q=80",
+  SUITE: "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=800&q=80"
 };
 
 export function RoomCard({

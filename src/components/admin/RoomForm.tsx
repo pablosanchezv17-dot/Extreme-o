@@ -8,7 +8,7 @@ type ValoresIniciales = Partial<DatosHabitacion> & { id?: string };
 export function RoomForm({ valoresIniciales, modo }: { valoresIniciales?: ValoresIniciales; modo: "crear" | "editar" }) {
   const [nombre, setNombre] = useState(valoresIniciales?.nombre ?? "");
   const [descripcion, setDescripcion] = useState(valoresIniciales?.descripcion ?? "");
-  const [tipo, setTipo] = useState<"PRIVADA" | "COMPARTIDA" | "DORMITORIO">(valoresIniciales?.tipo ?? "PRIVADA");
+  const [tipo, setTipo] = useState<"PRIVADA" | "COMPARTIDA" | "DORMITORIO" | "SUITE">(valoresIniciales?.tipo ?? "PRIVADA");
   const [capacidad, setCapacidad] = useState(valoresIniciales?.capacidad ?? 1);
   const [precioPorNoche, setPrecioPorNoche] = useState(valoresIniciales?.precioPorNoche ?? 0);
   const [imagenes, setImagenes] = useState((valoresIniciales?.imagenes ?? []).join("\n"));
@@ -76,10 +76,11 @@ export function RoomForm({ valoresIniciales, modo }: { valoresIniciales?: Valore
           <label className="field-label" htmlFor="tipo">
             Tipo
           </label>
-          <select id="tipo" className="input-field" value={tipo} onChange={(e) => setTipo(e.target.value as "PRIVADA" | "COMPARTIDA" | "DORMITORIO")}>
+          <select id="tipo" className="input-field" value={tipo} onChange={(e) => setTipo(e.target.value as "PRIVADA" | "COMPARTIDA" | "DORMITORIO" | "SUITE")}>
             <option value="PRIVADA">Privada</option>
             <option value="COMPARTIDA">Compartida</option>
             <option value="DORMITORIO">Dormitorio</option>
+            <option value="SUITE">Suite</option>
           </select>
         </div>
         <div>

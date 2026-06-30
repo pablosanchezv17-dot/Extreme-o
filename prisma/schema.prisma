@@ -12,6 +12,7 @@ enum TipoHabitacion {
   PRIVADA
   COMPARTIDA
   DORMITORIO
+  SUITE
 }
 
 enum EstadoReserva {
