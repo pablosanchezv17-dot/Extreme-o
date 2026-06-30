@@ -21,8 +21,67 @@ async function main() {
 
   console.log(`Administrador listo: ${adminEmail}`);
 
-  // upsert por slug: si la habitación ya existe (p. ej. porque cambiaste el precio
-  // a mano desde el panel), no se sobrescribe. Solo se crean las que faltan.
+  // ── Migraciones de datos: renombrar habitaciones antiguas a sus nuevos
+  // slugs ANTES de la creación general, para no chocar con el slug nuevo.
+  const renombrados: Record<string, string> = {};
+
+  const suiteAntigua = await prisma.habitacion.findUnique({ where: { slug: "suite-azotea" } });
+  if (suiteAntigua) {
+    await prisma.habitacion.update({
+      where: { slug: "suite-azotea" },
+      data: {
+        slug: "suite-deluxe",
+        nombre: "Suite Deluxe",
+        descripcion:
+          "Nuestra habitación más espaciosa, en la segunda planta, con baño privado y zona de estar. La piscina y el bar de la azotea están disponibles para todos los huéspedes del hostal.",
+        tipo: "SUITE",
+        capacidad: 3,
+        comodidades: ["Wifi", "Baño privado", "Zona de estar", "Aire acondicionado", "Minibar"]
+      }
+    });
+    renombrados["suite-azotea"] = "suite-deluxe";
+    console.log("Suite antigua corregida.");
+  }
+
+  const dormitorio6 = await prisma.habitacion.findUnique({ where: { slug: "dormitorio-6-camas" } });
+  if (dormitorio6) {
+    await prisma.habitacion.update({
+      where: { slug: "dormitorio-6-camas" },
+      data: {
+        slug: "doble-economica",
+        nombre: "Doble Económica",
+        descripcion:
+          "Habitación doble compacta con una cama de matrimonio, ideal para parejas que buscan ahorrar sin renunciar a la privacidad.",
+        tipo: "PRIVADA",
+        capacidad: 2,
+        comodidades: ["Wifi", "Cama de matrimonio", "Aire acondicionado"]
+      }
+    });
+    renombrados["dormitorio-6-camas"] = "doble-economica";
+    console.log("Dormitorio de 6 camas convertido en Doble Económica.");
+  }
+
+  const dormitorio4 = await prisma.habitacion.findUnique({ where: { slug: "dormitorio-4-camas" } });
+  if (dormitorio4) {
+    await prisma.habitacion.update({
+      where: { slug: "dormitorio-4-camas" },
+      data: {
+        slug: "doble-cama-supletoria",
+        nombre: "Doble con cama supletoria",
+        descripcion:
+          "Habitación con una cama de matrimonio y una cama individual adicional, perfecta para tres personas o familias pequeñas.",
+        tipo: "PRIVADA",
+        capacidad: 3,
+        comodidades: ["Wifi", "Cama de matrimonio", "Cama individual adicional", "Aire acondicionado"]
+      }
+    });
+    renombrados["dormitorio-4-camas"] = "doble-cama-supletoria";
+    console.log("Dormitorio de 4 camas convertido en Doble con cama supletoria.");
+  }
+
+  // ── Catálogo completo: upsert por slug. Si ya existe (porque acabamos de
+  // renombrarla arriba, o porque cambiaste el precio a mano), no se
+  // sobrescribe el precio ni las imágenes; solo se actualizan textos.
   const habitaciones = [
     {
       nombre: "Individual Económica",
@@ -80,34 +139,32 @@ async function main() {
       comodidades: ["Wifi", "Baño privado", "Dos camas de matrimonio", "Aire acondicionado"]
     },
     {
-      nombre: "Dormitorio mixto (6 camas)",
-      slug: "dormitorio-6-camas",
+      nombre: "Doble Económica",
+      slug: "doble-economica",
       descripcion:
-        "Cama en dormitorio mixto de 6 plazas, literas con cortina de privacidad y taquilla individual.",
-      tipo: TipoHabitacion.DORMITORIO,
-      capacidad: 1,
-      precioPorNoche: 18.0,
+        "Habitación doble compacta con una cama de matrimonio, ideal para parejas que buscan ahorrar sin renunciar a la privacidad.",
+      tipo: TipoHabitacion.PRIVADA,
+      capacidad: 2,
+      precioPorNoche: 42.0,
       imagenes: [],
-      comodidades: ["Wifi", "Taquilla con candado", "Cortina de privacidad"]
+      comodidades: ["Wifi", "Cama de matrimonio", "Aire acondicionado"]
     },
     {
-      nombre: "Dormitorio compartido (4 camas)",
-      slug: "dormitorio-4-camas",
+      nombre: "Doble con cama supletoria",
+      slug: "doble-cama-supletoria",
       descripcion:
-        "Dormitorio más reducido de 4 plazas, más tranquilo, con literas y taquilla individual.",
-      tipo: TipoHabitacion.DORMITORIO,
-      capacidad: 1,
-      precioPorNoche: 22.0,
+        "Habitación con una cama de matrimonio y una cama individual adicional, perfecta para tres personas o familias pequeñas.",
+      tipo: TipoHabitacion.PRIVADA,
+      capacidad: 3,
+      precioPorNoche: 58.0,
       imagenes: [],
-      comodidades: ["Wifi", "Taquilla con candado", "Enchufe individual"]
+      comodidades: ["Wifi", "Cama de matrimonio", "Cama individual adicional", "Aire acondicionado"]
     }
   ];
 
   for (const h of habitaciones) {
     await prisma.habitacion.upsert({
       where: { slug: h.slug },
-      // Actualiza textos/comodidades si ya existe (por correcciones),
-      // pero no toca precioPorNoche ni imagenes para no pisar cambios manuales del admin.
       update: {
         nombre: h.nombre,
         descripcion: h.descripcion,
@@ -117,23 +174,6 @@ async function main() {
       },
       create: h
     });
-  }
-
-  // Corrige la habitación antigua "suite-azotea" si existía con datos incorrectos,
-  // renombrándola a "suite-deluxe" para no duplicar habitaciones.
-  const suiteAntigua = await prisma.habitacion.findUnique({ where: { slug: "suite-azotea" } });
-  if (suiteAntigua) {
-    await prisma.habitacion.update({
-      where: { slug: "suite-azotea" },
-      data: {
-        slug: "suite-deluxe",
-        nombre: "Suite Deluxe",
-        descripcion:
-          "Nuestra habitación más espaciosa, en la segunda planta, con baño privado y zona de estar. La piscina y el bar de la azotea están disponibles para todos los huéspedes del hostal.",
-        comodidades: ["Wifi", "Baño privado", "Zona de estar", "Aire acondicionado", "Minibar"]
-      }
-    });
-    console.log("Suite antigua corregida.");
   }
 
   console.log("Habitaciones de ejemplo listas.");
@@ -158,10 +198,10 @@ async function main() {
     },
     {
       pedido: "DEMO0003RESA",
-      slug: "dormitorio-6-camas",
+      slug: "doble-economica",
       nombre: "Marta Gil",
       puntuacion: 4,
-      comentario: "Buena relación calidad-precio para viajar con poco presupuesto. Las literas son cómodas y había buen ambiente con otros huéspedes."
+      comentario: "Buena relación calidad-precio. La habitación era pequeña pero la cama de matrimonio muy cómoda y todo estaba impecable."
     },
     {
       pedido: "DEMO0004RESA",
@@ -183,6 +223,13 @@ async function main() {
       nombre: "Pablo Ruiz",
       puntuacion: 5,
       comentario: "El baño privado y el escritorio nos vinieron genial porque trabajé un par de días desde la habitación. Repetiremos."
+    },
+    {
+      pedido: "DEMO0007RESA",
+      slug: "doble-cama-supletoria",
+      nombre: "Elena Castro",
+      puntuacion: 5,
+      comentario: "Fuimos tres amigas y la cama supletoria fue muy cómoda. Buena opción si no sois pareja pero queréis algo más económico que dos habitaciones."
     }
   ];
 
