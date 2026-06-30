@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { SiteHeader, SiteFooter } from "@/components/SiteHeader";
 import { SearchBar } from "@/components/SearchBar";
 import { RoomCard } from "@/components/RoomCard";
@@ -48,8 +49,8 @@ export default async function HomePage({
             <span className="text-white/90 font-body text-sm">📍 Villa del Prado, Madrid · Reserva directa</span>
           </div>
           <h1 className="font-body text-4xl font-bold text-white sm:text-5xl lg:text-6xl leading-tight">
-            Tu alojamiento perfecto<br />
-            <span className="text-olive-300">con piscina en la azotea</span>
+            Bienvenido a<br />
+            <span className="text-olive-300">Hostal Extremeño</span>
           </h1>
           {/* Buscador */}
           <div className="mx-auto mt-8 max-w-3xl">
@@ -62,8 +63,7 @@ export default async function HomePage({
           <div className="mt-8 flex items-center justify-center gap-8">
             {[
               { valor: "100+", label: "Huéspedes felices" },
-              { valor: "4.9★", label: "Valoración media" },
-              { valor: "0%", label: "Comisiones" }
+              { valor: "4.9★", label: "Valoración media" }
             ].map((s) => (
               <div key={s.label} className="text-center">
                 <div className="font-body text-xl font-bold text-white">{s.valor}</div>
@@ -89,7 +89,7 @@ export default async function HomePage({
               {[
                 { icono: "🏊", titulo: "Piscina en la azotea", texto: "Nuestro hostal de dos plantas tiene una piscina en la azotea, ideal para refrescarte en los días de calor." },
                 { icono: "🍹", titulo: "Bar y restaurante", texto: "Junto a la piscina, en la misma azotea, encontrarás nuestro pequeño bar y restaurante abierto todo el día." },
-                { icono: "💰", titulo: "Sin comisiones", texto: "Reserva directamente. El precio que ves es exactamente lo que pagas, sin sorpresas." }
+                { icono: "🛏", titulo: "Habitaciones variadas", texto: "Desde individuales económicas hasta suites y habitaciones familiares, hay una opción para cada viaje." }
               ].map((f) => (
                 <div key={f.titulo} className="rounded-2xl border border-neutral-200 bg-white p-7 hover:border-olive-300 hover:shadow-card transition-all">
                   <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-olive-50 text-2xl mb-4">
@@ -153,10 +153,10 @@ export default async function HomePage({
         {!hayBusqueda && (
           <section className="mt-16 rounded-3xl bg-olive-700 p-10 text-center text-white">
             <h2 className="font-body text-2xl font-bold">¿Tienes alguna pregunta?</h2>
-            <p className="mt-2 font-body text-olive-200">Contáctanos directamente y te ayudamos a encontrar la opción perfecta.</p>
-            <a href="mailto:info@hostalextremeno.es" className="mt-6 inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3 font-body text-sm font-semibold text-olive-700 hover:bg-olive-50 transition-all">
-              ✉️ Escribirnos
-            </a>
+            <p className="mt-2 font-body text-olive-200">Escríbenos y te ayudamos a encontrar la opción perfecta.</p>
+            <Link href="/contacto" className="mt-6 inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3 font-body text-sm font-semibold text-olive-700 hover:bg-olive-50 transition-all">
+              ✉️ Contactar
+            </Link>
           </section>
         )}
       </main>

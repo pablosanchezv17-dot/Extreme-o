@@ -8,7 +8,8 @@ const ENLACES = [
   { href: "/admin", etiqueta: "Resumen" },
   { href: "/admin/reservas", etiqueta: "Reservas" },
   { href: "/admin/habitaciones", etiqueta: "Habitaciones" },
-  { href: "/admin/resenas", etiqueta: "Reseñas" }
+  { href: "/admin/resenas", etiqueta: "Reseñas" },
+  { href: "/admin/mensajes", etiqueta: "Mensajes" }
 ];
 
 export function AdminNav() {

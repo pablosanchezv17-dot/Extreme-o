@@ -15,6 +15,9 @@ export function SiteHeader() {
           <Link href="/valorar" className="font-body text-sm font-medium text-white/90 hover:text-white px-3 py-2 rounded-lg hover:bg-white/10 transition-all">
             Reseñas
           </Link>
+          <Link href="/contacto" className="font-body text-sm font-medium text-white/90 hover:text-white px-3 py-2 rounded-lg hover:bg-white/10 transition-all">
+            Contacto
+          </Link>
           <UserMenu />
         </nav>
       </div>
@@ -35,6 +38,7 @@ export function SiteHeaderSolid() {
         <nav className="flex items-center gap-3">
           <Link href="/" className="btn-ghost text-sm">Habitaciones</Link>
           <Link href="/valorar" className="btn-ghost text-sm">Reseñas</Link>
+          <Link href="/contacto" className="btn-ghost text-sm">Contacto</Link>
           <UserMenu />
         </nav>
       </div>

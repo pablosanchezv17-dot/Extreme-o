@@ -58,15 +58,15 @@ async function main() {
       comodidades: ["Wifi", "Baño privado", "Escritorio", "Aire acondicionado"]
     },
     {
-      nombre: "Suite con acceso a azotea",
-      slug: "suite-azotea",
+      nombre: "Suite Deluxe",
+      slug: "suite-deluxe",
       descripcion:
-        "Nuestra habitación más espaciosa, en la segunda planta, con baño privado y acceso directo a la azotea con piscina y bar.",
+        "Nuestra habitación más espaciosa, en la segunda planta, con baño privado y zona de estar. La piscina y el bar de la azotea están disponibles para todos los huéspedes del hostal.",
       tipo: TipoHabitacion.SUITE,
       capacidad: 3,
       precioPorNoche: 90.0,
       imagenes: [],
-      comodidades: ["Wifi", "Baño privado", "Acceso directo a la azotea", "Aire acondicionado", "Minibar"]
+      comodidades: ["Wifi", "Baño privado", "Zona de estar", "Aire acondicionado", "Minibar"]
     },
     {
       nombre: "Familiar",
@@ -106,9 +106,34 @@ async function main() {
   for (const h of habitaciones) {
     await prisma.habitacion.upsert({
       where: { slug: h.slug },
-      update: {},
+      // Actualiza textos/comodidades si ya existe (por correcciones),
+      // pero no toca precioPorNoche ni imagenes para no pisar cambios manuales del admin.
+      update: {
+        nombre: h.nombre,
+        descripcion: h.descripcion,
+        tipo: h.tipo,
+        capacidad: h.capacidad,
+        comodidades: h.comodidades
+      },
       create: h
     });
+  }
+
+  // Corrige la habitación antigua "suite-azotea" si existía con datos incorrectos,
+  // renombrándola a "suite-deluxe" para no duplicar habitaciones.
+  const suiteAntigua = await prisma.habitacion.findUnique({ where: { slug: "suite-azotea" } });
+  if (suiteAntigua) {
+    await prisma.habitacion.update({
+      where: { slug: "suite-azotea" },
+      data: {
+        slug: "suite-deluxe",
+        nombre: "Suite Deluxe",
+        descripcion:
+          "Nuestra habitación más espaciosa, en la segunda planta, con baño privado y zona de estar. La piscina y el bar de la azotea están disponibles para todos los huéspedes del hostal.",
+        comodidades: ["Wifi", "Baño privado", "Zona de estar", "Aire acondicionado", "Minibar"]
+      }
+    });
+    console.log("Suite antigua corregida.");
   }
 
   console.log("Habitaciones de ejemplo listas.");

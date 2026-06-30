@@ -141,6 +141,17 @@ model Resena {
   creadaEn     DateTime   @default(now())
 }
 
+// ── Mensajes de contacto ─────────────────────────────────────────────────
+model MensajeContacto {
+  id        String   @id @default(cuid())
+  nombre    String
+  email     String
+  telefono  String?
+  mensaje   String
+  leido     Boolean  @default(false)
+  creadoEn  DateTime @default(now())
+}
+
 // ── Administrador ────────────────────────────────────────────────────────
 model Administrador {
   id           String   @id @default(cuid())
