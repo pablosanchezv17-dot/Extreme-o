@@ -36,7 +36,7 @@ export default function LoginCliente() {
         <div className="mb-6 text-center">
           <Link href="/" className="inline-flex items-center gap-2 mb-4">
             <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-olive-700 text-lg">🏡</div>
-            <span className="font-body font-bold text-olive-700">Hostal Extremeño</span>
+            <span className="font-body font-bold text-olive-700">Hostal Azahar</span>
           </Link>
           <h1 className="font-body text-2xl font-bold text-neutral-800">Inicia sesión</h1>
           <p className="mt-1 font-body text-sm text-neutral-500">Accede a tus reservas y perfil</p>

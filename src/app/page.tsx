@@ -50,7 +50,7 @@ export default async function HomePage({
           </div>
           <h1 className="font-body text-4xl font-bold text-white sm:text-5xl lg:text-6xl leading-tight">
             Bienvenido a<br />
-            <span className="text-olive-300">Hostal Extremeño</span>
+            <span className="text-olive-300">Hostal Azahar</span>
           </h1>
           {/* Buscador */}
           <div className="mx-auto mt-8 max-w-3xl">

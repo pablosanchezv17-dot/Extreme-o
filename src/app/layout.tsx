@@ -24,7 +24,7 @@ const plexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Hostal Extremeño — Reservas directas",
+  title: "Hostal Azahar — Reservas directas",
   description: "Alojamiento en Villa del Prado, Madrid. Reserva tu habitación directamente, sin comisiones."
 };
 

@@ -19,7 +19,7 @@ async function construirContexto(): Promise<string> {
     )
     .join("\n");
 
-  return `Eres el asistente virtual del Hostal Extremeño, un hostal de 2 plantas en Villa del Prado, Madrid, con piscina y bar/restaurante en la azotea (de uso común para todos los huéspedes).
+  return `Eres el asistente virtual del Hostal Azahar, un hostal de 2 plantas en Villa del Prado, Madrid, con piscina y bar/restaurante en la azotea (de uso común para todos los huéspedes).
 
 HABITACIONES DISPONIBLES ACTUALMENTE:
 ${listado || "No hay información de habitaciones cargada."}

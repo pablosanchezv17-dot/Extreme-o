@@ -31,7 +31,7 @@ export default function AdminLogin() {
         <div className="mb-6 text-center">
           <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-olive-700 text-2xl">🏡</div>
           <h1 className="font-body text-xl font-bold text-neutral-800">Panel de administración</h1>
-          <p className="mt-1 font-body text-sm text-neutral-500">Hostal Extremeño</p>
+          <p className="mt-1 font-body text-sm text-neutral-500">Hostal Azahar</p>
         </div>
         <form onSubmit={manejarSubmit} className="space-y-4">
           <div>

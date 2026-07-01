@@ -6,7 +6,7 @@ type Mensaje = { role: "user" | "assistant"; content: string };
 
 const MENSAJE_BIENVENIDA: Mensaje = {
   role: "assistant",
-  content: "¡Hola! Soy el asistente del Hostal Extremeño 🏡 Puedo ayudarte con dudas sobre habitaciones, precios o la piscina y el bar de la azotea. ¿En qué te ayudo?"
+  content: "¡Hola! Soy el asistente del Hostal Azahar 🏡 Puedo ayudarte con dudas sobre habitaciones, precios o la piscina y el bar de la azotea. ¿En qué te ayudo?"
 };
 
 export function ChatWidget() {
@@ -71,7 +71,7 @@ export function ChatWidget() {
           <div className="flex items-center gap-2 bg-olive-700 px-4 py-3">
             <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white/20 text-lg">🏡</div>
             <div>
-              <p className="font-body text-sm font-semibold text-white">Asistente Hostal Extremeño</p>
+              <p className="font-body text-sm font-semibold text-white">Asistente Hostal Azahar</p>
               <p className="font-body text-[11px] text-olive-200">Disponible 24h</p>
             </div>
           </div>
