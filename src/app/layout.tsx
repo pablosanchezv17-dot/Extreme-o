@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Fraunces, Inter, IBM_Plex_Mono } from "next/font/google";
 import { Providers } from "@/components/Providers";
+import { ChatWidgetGate } from "@/components/ChatWidgetGate";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -31,7 +32,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="es">
       <body className={`${fraunces.variable} ${inter.variable} ${plexMono.variable} font-body`}>
-        <Providers>{children}</Providers>
+        <Providers>
+          {children}
+          <ChatWidgetGate />
+        </Providers>
       </body>
     </html>
   );

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { UserMenu } from "@/components/UserMenu";
+import { MobileNav } from "@/components/MobileNav";
 
 export function SiteHeader() {
   return (
@@ -27,6 +28,7 @@ export function SiteHeader() {
         </nav>
         <div className="flex items-center gap-2">
           <UserMenu />
+          <MobileNav variant="transparent" />
         </div>
       </div>
     </header>
@@ -51,6 +53,7 @@ export function SiteHeaderSolid() {
         </nav>
         <div className="flex items-center gap-2">
           <UserMenu />
+          <MobileNav variant="solid" />
         </div>
       </div>
     </header>
