@@ -25,12 +25,31 @@ const plexMono = IBM_Plex_Mono({
 
 export const metadata: Metadata = {
   title: "Hostal Azahar — Reservas directas",
-  description: "Alojamiento en Villa del Prado, Madrid. Reserva tu habitación directamente, sin comisiones."
+  description: "Alojamiento en Villa del Prado, Madrid. Reserva tu habitación directamente.",
+  manifest: "/manifest.json",
+  themeColor: "#475520",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "Hostal Azahar"
+  },
+  icons: {
+    icon: "/icons/icon-192x192.png",
+    apple: "/icons/apple-touch-icon.png"
+  }
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es">
+      <head>
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#475520" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-title" content="Hostal Azahar" />
+        <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+      </head>
       <body className={`${fraunces.variable} ${inter.variable} ${plexMono.variable} font-body`}>
         <Providers>
           {children}
