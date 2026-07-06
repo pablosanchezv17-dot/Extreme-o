@@ -5,18 +5,18 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Paleta ámbar/naranja azahar (extraída del logo)
+        // Paleta beige/arena cálida — tono azahar suave
         olive: {
-          50:  "#FFF8ED",
-          100: "#FEF0D0",
-          200: "#FCD99A",
-          300: "#F9C063",
-          400: "#F5A432",
-          500: "#D7842C",
-          600: "#B86D1F",
-          700: "#965616",
-          800: "#7A430F",
-          900: "#62340A"
+          50:  "#FDFAF5",
+          100: "#F5EDE0",
+          200: "#E8D5B8",
+          300: "#D9BB90",
+          400: "#C9A068",
+          500: "#B8874A",
+          600: "#9B7038",
+          700: "#7D5B2A",  // principal: botones, nav activo
+          800: "#634620",
+          900: "#4D3418"
         },
         neutral: {
           50:  "#f7f7f7",
@@ -30,16 +30,16 @@ const config: Config = {
           800: "#222222",
           900: "#111111"
         },
-        gold: "#D7842C",
+        gold: "#C9A068",
         rose: "#E61E4D",
         ink: "#222222",
-        moss: "#B86D1F",
-        mossdark: "#965616",
+        moss: "#9B7038",
+        mossdark: "#7D5B2A",
         lantern: "#E61E4D",
         lanterndark: "#C2184A",
-        hairline: "#dddddd",
-        paper: "#ffffff",
-        canvas: "#f7f7f7"
+        hairline: "#E8D5B8",
+        paper: "#FDFAF5",
+        canvas: "#F5EDE0"
       },
       fontFamily: {
         display: ["var(--font-fraunces)", "Georgia", "serif"],

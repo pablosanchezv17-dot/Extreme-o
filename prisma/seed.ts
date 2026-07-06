@@ -124,7 +124,7 @@ async function main() {
       tipo: TipoHabitacion.SUITE,
       capacidad: 3,
       precioPorNoche: 90.0,
-      imagenes: [],
+      imagenes: ["https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80"],
       comodidades: ["Wifi", "Baño privado", "Zona de estar", "Aire acondicionado", "Minibar"]
     },
     {
@@ -135,7 +135,7 @@ async function main() {
       tipo: TipoHabitacion.SUITE,
       capacidad: 4,
       precioPorNoche: 110.0,
-      imagenes: [],
+      imagenes: ["https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=1200&q=80"],
       comodidades: ["Wifi", "Baño privado", "Dos camas de matrimonio", "Aire acondicionado"]
     },
     {
@@ -174,6 +174,19 @@ async function main() {
       },
       create: h
     });
+  }
+
+  // Asigna fotos de ejemplo a Suite y Familiar solo si todavía no tienen
+  // ninguna imagen propia (para no pisar fotos reales que hayas subido).
+  const fotosPorDefecto: Record<string, string> = {
+    "suite-deluxe": "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&q=80",
+    "familiar": "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=1200&q=80"
+  };
+  for (const [slug, foto] of Object.entries(fotosPorDefecto)) {
+    const habitacion = await prisma.habitacion.findUnique({ where: { slug } });
+    if (habitacion && habitacion.imagenes.length === 0) {
+      await prisma.habitacion.update({ where: { slug }, data: { imagenes: [foto] } });
+    }
   }
 
   console.log("Habitaciones de ejemplo listas.");
