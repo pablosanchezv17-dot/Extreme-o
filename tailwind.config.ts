@@ -5,20 +5,19 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Paleta verde oliva moderna
+        // Paleta ámbar/naranja azahar (extraída del logo)
         olive: {
-          50:  "#f6f7f0",
-          100: "#e9edd8",
-          200: "#d4dbb3",
-          300: "#b8c484",
-          400: "#9aab58",
-          500: "#7d9038",
-          600: "#5c6e27",
-          700: "#475520",
-          800: "#394419",
-          900: "#2d3614"
+          50:  "#FFF8ED",
+          100: "#FEF0D0",
+          200: "#FCD99A",
+          300: "#F9C063",
+          400: "#F5A432",
+          500: "#D7842C",
+          600: "#B86D1F",
+          700: "#965616",
+          800: "#7A430F",
+          900: "#62340A"
         },
-        // Grises neutros (estilo Airbnb)
         neutral: {
           50:  "#f7f7f7",
           100: "#ebebeb",
@@ -31,13 +30,11 @@ const config: Config = {
           800: "#222222",
           900: "#111111"
         },
-        // Acentos
-        gold: "#E8A838",
+        gold: "#D7842C",
         rose: "#E61E4D",
-        // Compat con código anterior
         ink: "#222222",
-        moss: "#5c6e27",
-        mossdark: "#475520",
+        moss: "#B86D1F",
+        mossdark: "#965616",
         lantern: "#E61E4D",
         lanterndark: "#C2184A",
         hairline: "#dddddd",
