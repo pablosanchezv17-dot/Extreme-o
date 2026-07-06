@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   title: "Hostal Azahar — Reservas directas",
   description: "Alojamiento en Villa del Prado, Madrid. Reserva tu habitación directamente.",
   manifest: "/manifest.json",
-  themeColor: "#7D5B2A",
+  themeColor: "#475520",
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
@@ -44,7 +44,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="es">
       <head>
         <link rel="manifest" href="/manifest.json" />
-        <meta name="theme-color" content="#7D5B2A" />
+        <meta name="theme-color" content="#475520" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-title" content="Hostal Azahar" />

@@ -5,18 +5,18 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Paleta beige/arena cálida — tono azahar suave
+        // Verde oliva original
         olive: {
-          50:  "#FDFAF5",
-          100: "#F5EDE0",
-          200: "#E8D5B8",
-          300: "#D9BB90",
-          400: "#C9A068",
-          500: "#B8874A",
-          600: "#9B7038",
-          700: "#7D5B2A",  // principal: botones, nav activo
-          800: "#634620",
-          900: "#4D3418"
+          50:  "#f6f7f0",
+          100: "#e9edd8",
+          200: "#d4dbb3",
+          300: "#b8c484",
+          400: "#9aab58",
+          500: "#7d9038",
+          600: "#5c6e27",
+          700: "#475520",
+          800: "#394419",
+          900: "#2d3614"
         },
         neutral: {
           50:  "#f7f7f7",
@@ -30,13 +30,13 @@ const config: Config = {
           800: "#222222",
           900: "#111111"
         },
-        // Crema cálido — reemplaza blanco puro para encajar con el beige
+        // Beige cálido en lugar de blanco puro
         white: "#FAF6EE",
-        gold: "#C9A068",
+        gold: "#E8A838",
         rose: "#E61E4D",
         ink: "#222222",
-        moss: "#9B7038",
-        mossdark: "#7D5B2A",
+        moss: "#5c6e27",
+        mossdark: "#475520",
         lantern: "#E61E4D",
         lanterndark: "#C2184A",
         hairline: "#E8D5B8",
