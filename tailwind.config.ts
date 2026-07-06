@@ -30,6 +30,8 @@ const config: Config = {
           800: "#222222",
           900: "#111111"
         },
+        // Crema cálido — reemplaza blanco puro para encajar con el beige
+        white: "#FAF6EE",
         gold: "#C9A068",
         rose: "#E61E4D",
         ink: "#222222",
@@ -38,8 +40,8 @@ const config: Config = {
         lantern: "#E61E4D",
         lanterndark: "#C2184A",
         hairline: "#E8D5B8",
-        paper: "#FDFAF5",
-        canvas: "#F5EDE0"
+        paper: "#FAF6EE",
+        canvas: "#F2E8D8"
       },
       fontFamily: {
         display: ["var(--font-fraunces)", "Georgia", "serif"],
