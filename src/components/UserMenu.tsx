@@ -11,7 +11,7 @@ export function UserMenu() {
   if (!session) {
     return (
       <div className="flex items-center gap-2">
-        <Link href="/cuenta/login" className="btn-ghost text-sm">Iniciar sesión</Link>
+        <Link href="/cuenta/login" className="hidden md:inline-flex btn-ghost text-sm">Iniciar sesión</Link>
         <Link href="/cuenta/registro" className="btn-primary text-sm px-4 py-2">Registrarse</Link>
       </div>
     );

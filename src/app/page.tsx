@@ -46,7 +46,7 @@ export default async function HomePage({
 
         <div className="relative z-10 w-full max-w-4xl px-6 pt-24 text-center">
           <div className="inline-flex items-center gap-2 rounded-full bg-white/15 backdrop-blur px-4 py-2 mb-4">
-            <span className="text-white/90 font-body text-sm">📍 Villa del Prado, Madrid · Reserva directa</span>
+            <span className="text-white/90 font-body text-sm">📍 Villa del Prado, Madrid</span>
           </div>
           <h1 className="font-body text-4xl font-bold text-white sm:text-5xl lg:text-6xl leading-tight">
             Bienvenido a<br />
@@ -59,18 +59,7 @@ export default async function HomePage({
             </div>
           </div>
 
-          {/* Stats */}
-          <div className="mt-8 flex items-center justify-center gap-8">
-            {[
-              { valor: "100+", label: "Huéspedes felices" },
-              { valor: "4.9★", label: "Valoración media" }
-            ].map((s) => (
-              <div key={s.label} className="text-center">
-                <div className="font-body text-xl font-bold text-white">{s.valor}</div>
-                <div className="font-body text-xs text-white/60">{s.label}</div>
-              </div>
-            ))}
-          </div>
+
         </div>
       </section>
 
