@@ -10,9 +10,10 @@ type FotoGaleria = {
 };
 
 const FOTOS: FotoGaleria[] = [
-  { src: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=900&q=80", alt: "Habitación privada", categoria: "Habitaciones" },
-  { src: "https://images.unsplash.com/photo-1520277739336-7bf67edfa768?w=900&q=80", alt: "Dormitorio compartido", categoria: "Habitaciones" },
-  { src: "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=900&q=80", alt: "Habitación compartida", categoria: "Habitaciones" },
+  { src: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=900&q=80", alt: "Habitación doble", categoria: "Habitaciones" },
+  { src: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=900&q=80", alt: "Habitación matrimonio", categoria: "Habitaciones" },
+  { src: "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=900&q=80", alt: "Suite Deluxe", categoria: "Habitaciones" },
+  { src: "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=900&q=80", alt: "Habitación individual", categoria: "Habitaciones" },
   { src: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=900&q=80", alt: "Sala común", categoria: "Zonas comunes" },
   { src: "https://images.unsplash.com/photo-1493857671505-72967e2e2760?w=900&q=80", alt: "Cocina compartida", categoria: "Zonas comunes" },
   { src: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=900&q=80", alt: "Piscina en la azotea", categoria: "Piscina y azotea" },
