@@ -100,7 +100,13 @@ export function SiteFooter() {
           </div>
         </div>
         <div className="mt-10 border-t border-neutral-700 pt-6 flex items-center justify-between">
-          <p className="font-body text-xs text-neutral-500">© {new Date().getFullYear()} Hostal Azahar.</p>
+          <div className="flex flex-wrap gap-x-4 gap-y-1">
+            <p className="font-body text-xs text-neutral-500">© {new Date().getFullYear()} Hostal Azahar.</p>
+            <Link href="/legal" className="font-body text-xs text-neutral-500 hover:text-white">Aviso legal</Link>
+            <Link href="/privacidad" className="font-body text-xs text-neutral-500 hover:text-white">Privacidad</Link>
+            <Link href="/cookies" className="font-body text-xs text-neutral-500 hover:text-white">Cookies</Link>
+            <Link href="/terminos" className="font-body text-xs text-neutral-500 hover:text-white">Términos</Link>
+          </div>
           <span className="font-body text-xs text-neutral-500">Villa del Prado, Madrid</span>
         </div>
       </div>
