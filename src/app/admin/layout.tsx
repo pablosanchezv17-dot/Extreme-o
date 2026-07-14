@@ -4,9 +4,12 @@ import { AdminNav } from "@/components/admin/AdminNav";
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   return (
     <Providers>
-      <div className="grid min-h-screen grid-cols-[220px_1fr] bg-canvas">
+      <div className="min-h-screen bg-canvas md:grid md:grid-cols-[220px_1fr]">
         <AdminNav />
-        <main className="overflow-x-auto p-8">{children}</main>
+        {/* pb-20 en móvil para que el contenido no quede tapado por la bottom nav */}
+        <main className="overflow-x-auto p-4 pb-24 md:p-8 md:pb-8">
+          {children}
+        </main>
       </div>
     </Providers>
   );
