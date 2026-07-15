@@ -38,8 +38,8 @@ export default async function HomePage({
       {/* HERO */}
       <section className="relative min-h-[580px] flex items-center justify-center overflow-hidden">
         <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=1600&q=80')" }}
+          className="absolute inset-0 bg-cover bg-center bg-[center_30%]"
+          style={{ backgroundImage: "url('/hero.jpg')" }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-olive-900/80 via-olive-800/60 to-olive-900/80" />
         <SiteHeader />
